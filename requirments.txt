@@ -1,0 +1,4 @@
+argparse==1.2.1
+jieba==0.38
+wordcloud==1.2
+wsgiref==0.1.2

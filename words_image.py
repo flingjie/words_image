@@ -3,9 +3,12 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, ImageColorGenerator
+import os
 
 
 MAX_WORDS = 1000
+CUR_DIR = os.path.dirname(__file__)
+
 
 def process_text(content):
     result = jieba.analyse.textrank(content, topK=MAX_WORDS, withWeight=True)
@@ -16,10 +19,12 @@ def process_text(content):
         words.append((word, n))
     return words
 
+
 def generate_image(filename, image_name):
     content = open(filename, 'rb').read()
     graph = np.array(Image.open(image_name))
-    wc = WordCloud(background_color='white', max_words=MAX_WORDS, mask=graph)
+    wc = WordCloud(font_path=os.path.join(CUR_DIR, 'fonts/simhei.ttf'),
+                   background_color='white', max_words=MAX_WORDS, mask=graph)
     words = process_text(content)
     wc.generate_from_frequencies(words)
     image = ImageColorGenerator(graph)

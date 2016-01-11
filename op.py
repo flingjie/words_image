@@ -4,7 +4,7 @@ import os
 
 base_dir = os.path.dirname(__file__)
 words_dir = os.path.join(base_dir, "data")
-image_name = os.path.join(base_dir, "nami.png")
+image_name = os.path.join(base_dir, "tony.png")
 
 if __name__ == "__main__":
     files = []

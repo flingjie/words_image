@@ -9,25 +9,43 @@
 
 ## 使用
 
-    from words_image import generate_image
+*简单显示*
+
+    from words_image import get_content, show_image
     import os
 
-    base_dir = os.path.dirname(__file__)
-    # 定义文本文件夹路径
-    words_dir = os.path.join(base_dir, "data")
-    # 定义图形的图片路径
+    BASE_DIR = os.path.dirname(__file__)
+    # 文本文件夹路径
+    DATA_DIR = os.path.join(BASE_DIR, "data")
+    # 图片文件夹路径
+    IMAGE_DIR = os.path.join(BASE_DIR, "images")
+    # 源图片路径
     # 其中图片中白色的部分会被忽略
-    image_name = os.path.join(base_dir, "tony.png")
+    IMAGE_PATH = os.path.join(IMAGE_DIR, "tony.png")
 
     if __name__ == "__main__":
-         # 获取文件夹下所有文本路径
-         files = []
-         for f in os.listdir(words_dir):
-             full_f = os.path.join(words_dir, f)
-             if os.path.isfile(full_f):
-                 files.append(full_f)
-         # 生成词云
-         generate_image(files, image_name)
+        content = get_content(DATA_DIR)
+        ＃ 显示生成的词图
+        show_image(content, IMAGE_PATH)
+
+*批量处理并保存*
+    from words_image import get_content, save_image
+    import os
+
+    BASE_DIR = os.path.dirname(__file__)
+    # 文本文件夹路径
+    DATA_DIR = os.path.join(BASE_DIR, "data")
+    # 图片文件夹路径
+    IMAGE_DIR = os.path.join(BASE_DIR, "images")
+    # 结果保存路径
+    OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+
+    if __name__ == "__main__":
+        content = get_content(DATA_DIR)
+        for image in os.listdir(IMAGE_DIR):
+            image_name = os.path.join(IMAGE_DIR, image)
+            save_image(content, image_name, OUTPUT_DIR)
+
 
 ## 示例
 

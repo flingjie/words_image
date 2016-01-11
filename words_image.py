@@ -16,16 +16,17 @@ def process_text(content):
     return words
 
 
-def get_content(files):
+def get_content(data_dir):
     content = ''
-    for f in files:
-        content += open(f, 'rb').read()
-        content += '\n'
+    for f in os.listdir(data_dir):
+        filename = os.path.join(data_dir, f)
+        if os.path.isfile(filename):
+            content += open(filename, 'rb').read()
+            content += '\n'
     return content
 
 
-def generate_image(files, src_image):
-    content = get_content(files)
+def generate_image(content, src_image):
     graph = np.array(Image.open(src_image))
     wc = WordCloud(font_path=os.path.join(CUR_DIR, 'fonts/simhei.ttf'),
                    background_color='white', max_words=MAX_WORDS, mask=graph)
@@ -35,8 +36,8 @@ def generate_image(files, src_image):
     return wc, image_color
 
 
-def show_image(files, image_name):
-    wc, image_color = generate_image(files, image_name)
+def show_image(content, image_name):
+    wc, image_color = generate_image(content, image_name)
     plt.imshow(wc)
     plt.axis("off")
     plt.imshow(wc.recolor(color_func=image_color))
@@ -44,10 +45,11 @@ def show_image(files, image_name):
     plt.show()
 
 
-def save_image(files, image_name):
-    wc, image_color = generate_image(files, image_name)
+def save_image(content, image_name, output_dir):
+    wc, image_color = generate_image(content, image_name)
     plt.imshow(wc)
     plt.axis("off")
     plt.imshow(wc.recolor(color_func=image_color))
     plt.axis("off")
-    plt.savefig("result_" + os.path.basename(image_name))
+    output_path = os.path.join(output_dir, os.path.basename(image_name))
+    plt.savefig(output_path)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from words_image import generate_image
+from words_image import save_image
 import os
 
 base_dir = os.path.dirname(__file__)
@@ -12,4 +12,4 @@ if __name__ == "__main__":
         full_f = os.path.join(words_dir, f)
         if os.path.isfile(full_f):
             files.append(full_f)
-    generate_image(files, image_name)
+    save_image(files, image_name)

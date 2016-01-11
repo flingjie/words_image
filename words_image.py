@@ -16,24 +16,38 @@ def process_text(content):
     return words
 
 
-def generate_image(files, image_name):
+def get_content(files):
     content = ''
     for f in files:
         content += open(f, 'rb').read()
         content += '\n'
-    graph = np.array(Image.open(image_name))
+    return content
+
+
+def generate_image(files, src_image):
+    content = get_content(files)
+    graph = np.array(Image.open(src_image))
     wc = WordCloud(font_path=os.path.join(CUR_DIR, 'fonts/simhei.ttf'),
                    background_color='white', max_words=MAX_WORDS, mask=graph)
     words = process_text(content)
-    print(len(words))
     wc.generate_from_frequencies(words)
-    image = ImageColorGenerator(graph)
+    image_color = ImageColorGenerator(graph)
+    return wc, image_color
 
+
+def show_image(files, image_name):
+    wc, image_color = generate_image(files, image_name)
     plt.imshow(wc)
     plt.axis("off")
-    plt.imshow(wc.recolor(color_func=image))
-    plt.axis("off")
-    plt.figure()
-    plt.imshow(graph, cmap=plt.cm.gray)
+    plt.imshow(wc.recolor(color_func=image_color))
     plt.axis("off")
     plt.show()
+
+
+def save_image(files, image_name):
+    wc, image_color = generate_image(files, image_name)
+    plt.imshow(wc)
+    plt.axis("off")
+    plt.imshow(wc.recolor(color_func=image_color))
+    plt.axis("off")
+    plt.savefig("result_" + os.path.basename(image_name))

@@ -17,7 +17,7 @@
     words_dir = os.path.join(base_dir, "data")
     # 定义图形的图片路径
     # 其中图片中白色的部分会被忽略
-    image_name = os.path.join(base_dir, "nami.png")
+    image_name = os.path.join(base_dir, "tony.png")
 
     if __name__ == "__main__":
          # 获取文件夹下所有文本路径
@@ -33,15 +33,8 @@
 
 *路飞*
 
-_原图_
-![luffy](luffy.png)
-_词云图_
 ![luffy_word](luffy_result.png)
 
 *乔巴*
 
-_云图_
-![tony](tony.png)
-
-_词云图_
 ![tony_words](tony_result.png)

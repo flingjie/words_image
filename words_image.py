@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import jieba.analyse
 from PIL import Image
 import numpy as np
@@ -11,21 +12,20 @@ CUR_DIR = os.path.dirname(__file__)
 
 
 def process_text(content):
-    result = jieba.analyse.textrank(content, topK=MAX_WORDS, withWeight=True)
-    min_weight = result[-1][1]
-    words = []
-    for word,weight in result:
-        n = int(weight/min_weight)
-        words.append((word, n))
+    words = jieba.analyse.textrank(content, topK=MAX_WORDS, withWeight=True)
     return words
 
 
-def generate_image(filename, image_name):
-    content = open(filename, 'rb').read()
+def generate_image(files, image_name):
+    content = ''
+    for f in files:
+        content += open(f, 'rb').read()
+        content += '\n'
     graph = np.array(Image.open(image_name))
     wc = WordCloud(font_path=os.path.join(CUR_DIR, 'fonts/simhei.ttf'),
                    background_color='white', max_words=MAX_WORDS, mask=graph)
     words = process_text(content)
+    print(len(words))
     wc.generate_from_frequencies(words)
     image = ImageColorGenerator(graph)
 

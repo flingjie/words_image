@@ -29,6 +29,7 @@
         show_image(content, IMAGE_PATH)
 
 *批量处理并保存*
+
     from words_image import get_content, save_image
     import os
 

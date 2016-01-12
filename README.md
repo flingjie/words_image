@@ -51,8 +51,8 @@
 
 *路飞*
 
-![luffy_word](luffy_result.png)
+![luffy_word](output/luffy.png)
 
 *乔巴*
 
-![tony_words](tony_result.png)
+![tony_words](output/tony.png)

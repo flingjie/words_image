@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import jieba.analyse
-from PIL import Image
+from PIL import Image, ImageFont
 import numpy as np
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, ImageColorGenerator
@@ -11,26 +11,21 @@ MAX_WORDS = 1000
 CUR_DIR = os.path.dirname(__file__)
 
 
-def process_text(content):
-    words = jieba.analyse.textrank(content, topK=MAX_WORDS, withWeight=True)
-    return words
-
-
-def get_content(data_dir):
+def get_keywords(data_dir):
     content = ''
     for f in os.listdir(data_dir):
         filename = os.path.join(data_dir, f)
         if os.path.isfile(filename):
             content += open(filename, 'rb').read()
             content += '\n'
-    return content
+    words = jieba.analyse.textrank(content, topK=MAX_WORDS, withWeight=True)
+    return words
 
 
-def generate_image(content, src_image):
+def generate_image(words, src_image):
     graph = np.array(Image.open(src_image))
     wc = WordCloud(font_path=os.path.join(CUR_DIR, 'fonts/simhei.ttf'),
                    background_color='white', max_words=MAX_WORDS, mask=graph)
-    words = process_text(content)
     wc.generate_from_frequencies(words)
     image_color = ImageColorGenerator(graph)
     return wc, image_color

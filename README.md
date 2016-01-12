@@ -11,7 +11,7 @@
 
 *简单显示*
 
-    from words_image import get_content, show_image
+    from words_image import get_keywords, show_image
     import os
 
     BASE_DIR = os.path.dirname(__file__)
@@ -24,13 +24,13 @@
     IMAGE_PATH = os.path.join(IMAGE_DIR, "tony.png")
 
     if __name__ == "__main__":
-        content = get_content(DATA_DIR)
+        words = get_keywords(DATA_DIR)
         ＃ 显示生成的词图
-        show_image(content, IMAGE_PATH)
+        show_image(words, IMAGE_PATH)
 
 *批量处理并保存*
 
-    from words_image import get_content, save_image
+    from words_image import get_keywords, save_image
     import os
 
     BASE_DIR = os.path.dirname(__file__)
@@ -42,10 +42,10 @@
     OUTPUT_DIR = os.path.join(BASE_DIR, "output")
 
     if __name__ == "__main__":
-        content = get_content(DATA_DIR)
+        words = get_keywords(DATA_DIR)
         for image in os.listdir(IMAGE_DIR):
             image_name = os.path.join(IMAGE_DIR, image)
-            save_image(content, image_name, OUTPUT_DIR)
+            save_image(words, image_name, OUTPUT_DIR)
 
 
 ## 示例

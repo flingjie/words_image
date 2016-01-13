@@ -1,7 +1,8 @@
 生成图形词云
 ==========
 
-使用jieba和wordcloud生成图形词云
+使用jieba和wordcloud生成图形词云.
+其中情感分析部分使用了bosonnlp提供的情感词典(http://bosonnlp.com/dev/resource)[http://bosonnlp.com/dev/resource],感谢.
 
 ## 安装
 
@@ -57,3 +58,4 @@
 *乔巴*
 
 ![tony_words](output/tony.png)
+

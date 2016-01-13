@@ -9,6 +9,9 @@ import os
 
 MAX_WORDS = 1000
 CUR_DIR = os.path.dirname(__file__)
+IMAGE_DIR = os.path.join(CUR_DIR, "images")
+HAPPY_PATH = os.path.join(IMAGE_DIR, 'happy.png')
+SAD_PATH = os.path.join(IMAGE_DIR, 'sad.png')
 
 
 def get_keywords(data_dir):
@@ -48,3 +51,14 @@ def save_image(content, image_name, output_dir):
     plt.axis("off")
     output_path = os.path.join(output_dir, os.path.basename(image_name))
     plt.savefig(output_path)
+
+
+def show_emotion(content, sentiment):
+    if sentiment < 0:
+        image_name = SAD_PATH
+    else:
+        image_name = HAPPY_PATH
+    wc, image_color = generate_image(content, image_name)
+    plt.imshow(wc)
+    plt.axis("off")
+    plt.show()

@@ -49,13 +49,34 @@
             save_image(words, image_name, OUTPUT_DIR)
 
 
+*根据情感生成不同表情*
+
+    BASE_DIR = os.path.dirname(__file__)
+    WEIBO_DIR = os.path.join(BASE_DIR, 'weibo')
+    # 博文路径
+    WEIBO_PATH = os.path.join(WEIBO_DIR, 'happy.txt')
+
+
+    if __name__ == "__main__":
+        # 获取博文关键字列表和情感分数
+        words, sentiment = get_words_sentiment(WEIBO_PATH)
+        # 根据情感分数显示笑脸或悲伤
+        show_emotion(words, sentiment)
+
 ## 示例
 
 *路飞*
 
-![luffy_word](output/luffy.png)
+![luffy](output/luffy.png)
 
 *乔巴*
 
-![tony_words](output/tony.png)
+![tony](output/tony.png)
 
+*笑脸*
+
+![happy](output/happy.png)
+
+*伤感*
+
+![sad](output/sad.png)

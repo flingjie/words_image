@@ -2,6 +2,7 @@ appnope==0.1.0
 cycler==0.9.0
 decorator==4.0.6
 gnureadline==6.3.3
+images2gif==1.0.1
 ipython==4.0.1
 ipython-genutils==0.1.0
 jieba==0.38

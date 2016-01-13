@@ -61,4 +61,6 @@ def show_emotion(content, sentiment):
     wc, image_color = generate_image(content, image_name)
     plt.imshow(wc)
     plt.axis("off")
+    plt.imshow(wc.recolor(color_func=image_color))
+    plt.axis("off")
     plt.show()

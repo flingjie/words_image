@@ -80,3 +80,13 @@
 *伤感*
 
 ![sad](output/sad.png)
+
+## 注意
+
+默认安装的images2gif只支持PIL, 不支持Pillow,
+需要将:
+    for im in images:
+        palettes.append( getheader(im)[1] )
+修改为:
+    for im in images:
+        palettes.append( im.palette.getdata()[1] )

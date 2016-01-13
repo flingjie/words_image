@@ -3,7 +3,7 @@ import os
 import jieba
 
 BASE_DIR = os.path.dirname(__file__)
-TRAINING_DATA_DIR = os.path.join(BASE_DIR, 'BosonNLP_sentiment_score')
+TRAINING_DATA_DIR = os.path.join(BASE_DIR, 'sentiment')
 SENTIMENT_FILE = os.path.join(TRAINING_DATA_DIR, 'BosonNLP_sentiment_score.txt')
 BASE_NUMBER = 8
 WORDS_NUMBER = 100

@@ -91,3 +91,4 @@ def save_gif(content, gif_name, output_dir, duration=0.5):
     print("Start generate gif ... ")
     out_path = os.path.join(output_dir, os.path.basename(gif_name))
     writeGif(out_path, images, duration=duration)
+

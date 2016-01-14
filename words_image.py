@@ -70,7 +70,7 @@ def show_emotion(content, sentiment):
     plt.show()
 
 
-def save_gif(content, gif_name, output_dir, duration=0.5):
+def words2gif(content, gif_name, output_dir, duration=0.5):
     im = Image.open(gif_name)
     palette = im.getpalette()
     i = 0
@@ -92,3 +92,16 @@ def save_gif(content, gif_name, output_dir, duration=0.5):
     out_path = os.path.join(output_dir, os.path.basename(gif_name))
     writeGif(out_path, images, duration=duration)
 
+
+def words2gif_from_images(content, images_dir, output_dir, duration=0.5):
+    images = []
+    for f in os.listdir(images_dir):
+        filename = os.path.join(images_dir, f)
+        if os.path.isfile(filename):
+            print("Start handle {}".format(f))
+            image = Image.open(filename)
+            wc, image_color = generate_image(content, image)
+            wc.recolor(color_func=image_color)
+            images.append(wc.to_image())
+    out_path = os.path.join(output_dir, "{}.gif".format(os.path.basename(images_dir)))
+    writeGif(out_path, images, duration=duration)

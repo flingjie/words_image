@@ -73,6 +73,10 @@
 
 ![tony](output/tony.png)
 
+*动图*
+
+![one piece](output/one_piece.png)
+
 *笑脸*
 
 ![happy](output/happy.png)

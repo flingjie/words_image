@@ -75,7 +75,7 @@
 
 *动图*
 
-![one piece](output/one_piece.png)
+![one piece](output/one_piece.gif)
 
 *笑脸*
 

@@ -10,6 +10,45 @@
 
 ## 使用
 
+1. 处理文本, 显示云图
+
+    # content: 输入的文本内容
+    # image_name: 图片完整路径
+    show_image(content, image_name)
+
+2. 处理文本, 保存到文件夹
+
+    # content: 输入的文本内容
+    # image_name: 图片完整路径
+    # output_dir: 结果输出的文件夹路径
+    save_image(content, image_name, output_dir)
+
+3. 对文本进行情感分析, 根据结果输出不同图像
+
+    # content:
+    # sentiment: 情感分, 大于等于0 显示笑脸, 小于0显示哭脸
+    show_emotion(content, sentiment)
+
+4. 处理文本, 生成gif
+
+    # gif 生成 gif
+
+    # content: 输入的文本内容
+    # gif_name: gif图片完整路径
+    # output_dir:
+    # duration: 图片帧切换间隔时间
+    words2gif(content, gif_name, output_dir, duration=0.5)
+
+    # 多张静态图生成gif
+
+    # content: 输入的文本内容
+    # images_dir: 静态图文件夹
+    # output_dir:
+    # duration: 图片帧切换间隔时间
+    words2gif_from_images(content, images_dir, output_dir, duration=0.5)
+
+## 示例
+
 *简单显示*
 
     from words_image import get_keywords, show_image
@@ -63,7 +102,7 @@
         # 根据情感分数显示笑脸或悲伤
         show_emotion(words, sentiment)
 
-## 示例
+## 截图
 
 *路飞*
 
